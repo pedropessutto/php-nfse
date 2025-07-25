@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Amtec\Factories\v02;
+namespace NFePHP\NFSe\Models\Goiania\Factories\v02;
 
 class RecepcionarLoteRps
 {
