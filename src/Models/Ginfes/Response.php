@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Ginges;
+namespace NFePHP\NFSe\Models\Ginfes;
 
 /**
  * Classe para extração dos dados retornados pelos webservices
