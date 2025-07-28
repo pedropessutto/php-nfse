@@ -3,5 +3,7 @@ IBGE: 4217204
 TOM: 8339
 SIAF: 8339
 Padrão: Betha
-URL Homologação:
+SOAP Version: 1.1
+URL Homologação: http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS
 URL Produção:
+xmlns: http://www.betha.com.br/e-nota-contribuinte-ws

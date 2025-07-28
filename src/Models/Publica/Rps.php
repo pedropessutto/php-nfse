@@ -79,7 +79,7 @@ class Rps extends RpsBase
         'uf' => '',
         'cep' => '',
         'cod_pais' => '',
-        'nome_municipio'
+        'nome_municipio' => ''
     ];
     /**
      * @var array

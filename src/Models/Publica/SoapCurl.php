@@ -122,10 +122,10 @@ use NFePHP\Common\Soap\SoapCurl as SoapCurlBase;
             throw SoapException::unableToLoadCurl($e->getMessage());
         }
         if ($this->soaperror != '') {
-            throw SoapException::soapFault($this->soaperror . " [$url]");
+            throw SoapException::soapFault($this->soaperror . " [$url]", $httpcode);
         }
         if ($httpcode != 200) {
-            throw SoapException::soapFault(" [$url]" . $this->responseHead);
+            throw SoapException::soapFault(" [$url]" . $this->responseHead, $httpcode);
         }
         return $this->responseBody;
     }

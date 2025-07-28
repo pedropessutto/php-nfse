@@ -283,15 +283,14 @@ class RenderRps extends RenderRPSBase
             'IssRetido',
             false
         );
-        // <======= RESPONSAVEL RETENCAO AQUI =======>
-        // self::$dom->addChild(
-        //     $servico,
-        //     'ResponsavelRetencao',
-        //     $rps->infResponsavelRetencao,
-        //     false,
-        //     'ResponsavelRetencao',
-        //     false
-        // );
+        self::$dom->addChild(
+         $servico,
+         'ResponsavelRetencao',
+         $rps->infResponsavelRetencao,
+         false,
+         'ResponsavelRetencao',
+         false
+        );
         self::$dom->addChild(
             $servico,
             'ItemListaServico',

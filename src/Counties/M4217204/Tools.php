@@ -17,9 +17,9 @@ namespace NFePHP\NFSe\Counties\M4217204;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Publica\Tools as ToolsPublica;
+use NFePHP\NFSe\Models\Betha\Tools as ToolsBetha;
 
-class Tools extends ToolsPublica
+class Tools extends ToolsBetha
 {
     /**
      * Webservices URL
@@ -33,12 +33,12 @@ class Tools extends ToolsPublica
      * County Namespace
      * @var string
      */
-    protected $xmlns = '';
+    protected $xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
     /**
      * Soap Version
      * @var int
      */
-    protected $soapversion = SOAP_1_2;
+    protected $soapversion = SOAP_1_1;
     /**
      * SIAFI County Cod
      * @var int
@@ -48,7 +48,7 @@ class Tools extends ToolsPublica
      * Indicates when use CDATA string on message
      * @var boolean
      */
-    protected $withcdata = true;
+    protected $withcdata = false;
     /**
      * Encription signature algorithm
      * @var string
@@ -58,13 +58,19 @@ class Tools extends ToolsPublica
      * Version of schemas
      * @var int
      */
-    protected $versao = 300;
+    protected $versao = 202;
     /**
      * namespaces for soap envelope
      * @var array
      */
     protected $namespaces = [
-        'xmlns:S'   => 'http://schemas.xmlsoap.org/soap/envelope/',
-        'xmlns:ns2' => 'http://service.nfse.integracao.ws.publica/'
+        1 => [
+            'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
+            'xmlns:e' => "http://www.betha.com.br/e-nota-contribuinte-ws",
+        ],
+        2 => [
+            'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
+            'xmlns:e' => "http://www.betha.com.br/e-nota-contribuinte-ws",
+        ]
     ];
 }

@@ -202,6 +202,10 @@ class Rps extends RpsBase
      * @var int
      */
     public $infMunicipioPrestacaoServico;
+    /**
+     * @var int
+     */
+    public $infResponsavelRetencao;
 
     /**
      * Set informations of provider
@@ -900,5 +904,25 @@ class Rps extends RpsBase
             throw new \InvalidArgumentException($msg);
         }
         $this->infMunicipioPrestacaoServico = $value;
+    }
+
+    /**
+     * Set IBGE county code where service was realized
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function responsavelRetencao($value, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "Deve ser passado o código do IBGE.";
+        } else {
+            $msg = "O item '$campo' deve ser inteiro, referente ao responsável pela retenção. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new \InvalidArgumentException($msg);
+        }
+        $this->infResponsavelRetencao = $value;
     }
 }
