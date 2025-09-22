@@ -35,12 +35,12 @@ class DOMImproved extends DOMImprovedBase
      * @return void
      */
     public function addChild(
-        DOMElement &$parent,
-        $name,
-        $content,
-        $obrigatorio = false,
-        $descricao = '',
-        $force = false,
+        DOMElement &$parent, // $identificacaoTomador,
+        $name, // 'InscricaoMunicipal',
+        $content, // $rps->infTomador['im'],
+        $obrigatorio = false, // true,
+        $descricao = '', // 'InscricaoMunicipal',
+        $force = false, // false
         $attrs = []
     ) {
         if (empty($name)) {
