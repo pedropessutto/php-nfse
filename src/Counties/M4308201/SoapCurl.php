@@ -63,14 +63,6 @@ class SoapCurl extends SoapBase
         $response = '';
 
         $envelope = $this->makeSendEnvelope($namespaces, $request);
-
-        $msgSize = strlen($envelope);
-        $parameters[] = "Content-Type: text/xml; charset=utf-8";
-        $parameters[] = "Content-length: $msgSize";
-        if (!empty($action)) {
-            $parameters[0] .= "action=$action";
-        }
-
         $this->requestHead = implode("\n", $parameters);
         $this->requestBody = $envelope;
         $envelope = str_replace('<?xml version="1.0"?>', '', $envelope);
