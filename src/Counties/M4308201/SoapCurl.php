@@ -66,8 +66,8 @@ class SoapCurl extends SoapBase
         $this->requestHead = implode("\n", $parameters);
         $this->requestBody = $envelope;
         $envelope = str_replace('<?xml version="1.0"?>', '', $envelope);
-        $envelope = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $envelope);
-        $envelope = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $envelope);
+/*        $envelope = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $envelope);*/
+/*        $envelope = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $envelope);*/
 
         try {
             $oCurl = curl_init();

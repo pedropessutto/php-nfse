@@ -74,7 +74,7 @@ class RenderRps extends RenderRPSBase
         $numeroFormatado = str_pad($rps->infNumero, 16, '0', STR_PAD_LEFT);
         $tcdeclaracaoRPS = self::$dom->createElement("tcDeclaracaoPrestacaoServico");
         $infRPS = self::$dom->createElement("InfDeclaracaoPrestacaoServico");
-        $infRPS->setAttribute('Id', "1{$rps->infPrestador['cnpjcpf']}{$numeroFormatado}");
+        $infRPS->setAttribute('Id', "R{$rps->infPrestador['cnpjcpf']}{$numeroFormatado}");
 
         /** RPS Filha **/
         $rpsInf = self::$dom->createElement('Rps');

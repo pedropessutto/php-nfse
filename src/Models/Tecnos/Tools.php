@@ -47,9 +47,10 @@ class Tools extends ToolsBase
      * @param string $url
      * @return string
      */
-    protected function recepcionarLoteRpsSincronoCommon($fact, $lote, $rpss, $url = '')
+    protected function recepcionarLoteRpsSincronoCommon($fact, $lote, $rpss, $url = '', $certificado = null)
     {
-        $this->method = 'EnvioLoteRPSSincrono';
+//        $this->method = 'EnvioLoteRPSSincrono';
+        $this->method = 'EnvioLoteRPSSincronoComRetornoLista';
         $fact->setSignAlgorithm($this->algorithm);
         $fact->setTimezone($this->timezone);
         $message = $fact->render(
@@ -58,7 +59,8 @@ class Tools extends ToolsBase
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
             $lote,
-            $rpss
+            $rpss,
+            $certificado
         );
         $this->xmlns = 'http://tempuri.org/';
         return $this->sendRequest($url, $message);
@@ -117,14 +119,14 @@ class Tools extends ToolsBase
                 $request =
                     "<m{$this->method} xmlns=\"{$this->xmlns}\">"
                     . "<remessa>"
-                    . "<![CDATA["
+//                    . "<![CDATA["
                     . $message
-                    . "]]>"
+//                    . "]]>"
                     . "</remessa>"
                     . "<cabecalho>"
-                    . "<![CDATA["
+//                    . "<![CDATA["
                     . "<cabecalho xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><versaoDados>{$versao}</versaoDados></cabecalho>"
-                    . "]]>"
+//                    . "]]>"
                     . "</cabecalho>"
                     . "</m{$this->method}>";
                 break;

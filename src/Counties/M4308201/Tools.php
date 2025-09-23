@@ -23,10 +23,13 @@ class Tools extends ToolsModel
     protected $url = [
         1 => [
             'ConsultaNFSePorRPS' => 'http://flores.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx',
+            'EnvioLoteRPSSincrono' => 'http://flores.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx',
+            'EnvioLoteRPSSincronoComRetornoLista' => 'http://flores.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx',
         ],
         2 => [
             'ConsultaSequenciaLoteNotaRPS' => 'http://homologaflo.nfse-tecnos.com.br:9084/ConsultaSequenciaLoteNotaRPS.asmx',
             'EnvioLoteRPSSincrono' => 'http://homologaflo.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx',
+            'EnvioLoteRPSSincronoComRetornoLista' => 'http://homologaflo.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx',
             'ConsultaNFSePorRPS' => 'http://homologaflo.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx',
             'CancelarNfse' => 'http://homologaflo.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx',
         ]
@@ -79,13 +82,13 @@ class Tools extends ToolsModel
      * @param $rpss
      * @return string
      */
-    public function recepcionarLoteRpsSincrono($lote, $rpss)
+    public function recepcionarLoteRpsSincrono($lote, $rpss, $certificado = null)
     {
         $class = "NFePHP\\NFSe\\Models\\Tecnos\\Factories\\v{$this->versao}\\RecepcionarLoteRps";
         $fact = new $class($this->certificate);
-        $this->soapAction = 'http://tempuri.org/mEnvioLoteRPSSincrono';
+        $this->soapAction = 'http://tempuri.org/mEnvioLoteRPSSincronoComRetornoLista';
         $this->xmlns = 'http://www.abrasf.org.br/nfse.xsd';
-        return $this->recepcionarLoteRpsSincronoCommon($fact, $lote, $rpss);
+        return $this->recepcionarLoteRpsSincronoCommon($fact, $lote, $rpss, '', $certificado);
     }
 
 

@@ -26,7 +26,8 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $remetenteCNPJCPF,
         $inscricaoMunicipal,
         $lote,
-        $rpss
+        $rpss,
+        $certificado = null
     )
     {
         $method = 'EnviarLoteRpsSincrono';
@@ -105,7 +106,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $listaRps = $dom->createElement('ListaRps');
         $dom->appChild($loteRps, $listaRps, 'Adicionando tag ListaRps a LoteRps');
         foreach ($rpss as $rps) {
-            RenderRps::appendRps($rps, $this->timezone, $this->certificate, $this->algorithm, $dom, $listaRps);
+            RenderRps::appendRps($rps, $this->timezone, $certificado ?: $this->certificate, $this->algorithm, $dom, $listaRps);
         }
 
         if ($qtdRps == 1) {
@@ -113,7 +114,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
             $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $dom->saveXML());
 
             $body = Signer::sign(
-                $this->certificate,
+                $certificado ?: $this->certificate,
                 $xml,
                 'InfDeclaracaoPrestacaoServico', // assina esta tag
                 'Id',
@@ -150,7 +151,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
             $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $dom->saveXML());
 
             $body = Signer::sign(
-                $this->certificate,
+                $certificado ?: $this->certificate,
                 $xml,
                 'LoteRps',
                 'Id',
