@@ -171,6 +171,15 @@ class RenderRps extends RenderRPSBase
             false
         );
 
+        self::$dom->addChild(
+            $infRPS,
+            'IdCidade',
+            $rps->infMunicipioPrestacaoServico,
+            true,
+            'IdCidade',
+            false
+        );
+
         /** Serviços **/
         $servico = self::$dom->createElement('Servico');
 
@@ -309,11 +318,12 @@ class RenderRps extends RenderRPSBase
             'IssRetido',
             false
         );
+
         self::$dom->addChild(
             $tcDadosServico,
             'ResponsavelRetencao',
             $rps->infResponsavelRetencao,
-            false,
+            true,
             'ResponsavelRetencao',
             false
         );
@@ -690,7 +700,7 @@ class RenderRps extends RenderRPSBase
             $infRPS,
             'RegimeEspecialTributacao',
             $rps->infRegimeEspecialTributacao,
-            false,
+            true,
             'RegimeEspecialTributacao',
             false
         );
@@ -716,6 +726,87 @@ class RenderRps extends RenderRPSBase
             $rps->infIncentivadorCultural,
             true,
             'IncentivoFiscal',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'PercentualCargaTributaria',
+            0,
+            true,
+            'PercentualCargaTributaria',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'ValorCargaTributaria',
+            0,
+            true,
+            'ValorCargaTributaria',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'PercentualCargaTributariaEstadual',
+            0,
+            true,
+            'PercentualCargaTributariaEstadual',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'ValorCargaTributariaEstadual',
+            0,
+            true,
+            'ValorCargaTributariaEstadual',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'PercentualCargaTributariaMunicipal',
+            0,
+            true,
+            'PercentualCargaTributariaMunicipal',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'ValorCargaTributariaMunicipal',
+            0,
+            true,
+            'ValorCargaTributariaMunicipal',
+            false
+        );
+
+//        self::$dom->addChild(
+//            $infRPS,
+//            'OutrasInformacoes',
+//            '',
+//            false,
+//            'OutrasInformacoes',
+//            false
+//        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'SiglaUF',
+            $rps->infUFPrestacaoServico,
+            true,
+            'SiglaUF',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'IdCidade',
+            $rps->infMunicipioPrestacaoServico,
+            true,
+            'IdCidade',
             false
         );
 

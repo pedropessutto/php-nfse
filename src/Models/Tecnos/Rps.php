@@ -54,7 +54,7 @@ class Rps extends RpsBase
     const SIM = 1;
     const NAO = 2;
 
-    const TOMADOR = 2;
+    const TOMADOR = 1;
     const INTERMEDIARIO = 2;
 
     /**
@@ -106,6 +106,10 @@ class Rps extends RpsBase
      * @var DateTime
      */
     public $infDataEmissao;
+    /**
+     * @var int
+     */
+    public $infM;
     /**
      * @var int
      */
@@ -222,6 +226,10 @@ class Rps extends RpsBase
      * @var int
      */
     public $infMunicipioPrestacaoServico;
+    /**
+     * @var string
+     */
+    public $infUFPrestacaoServico;
     /**
      * @var int
      */
@@ -882,20 +890,19 @@ class Rps extends RpsBase
 
     /**
      * Set Services List item
-     * @param string $value
+     * @param int $value
      * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
      * @throws InvalidArgumentException
      */
     public function responsavelRetencao($value, $campo = null)
     {
         if (!$campo) {
-            $msg = "O item da lista é obrigatório e deve ter no máximo 5 caracteres.";
+            $msg = "ResponsavelRetencao deve ser 1 ou 2.";
         } else {
-            $msg = "O item '$campo' é obrigatório e deve ter no máximo 5 caracteres. Informado: '$value'";
+            $msg = "O item '$campo' deve ser 1 ou 2. Informado: '$value'";
         }
 
-        $value = trim($value);
-        if (!Validator::stringType()->length(1, 5)->validate($value)) {
+        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
             throw new InvalidArgumentException($msg);
         }
         $this->infResponsavelRetencao = $value;
@@ -991,6 +998,26 @@ class Rps extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->infMunicipioPrestacaoServico = $value;
+    }
+
+    /**
+     * Set IBGE county code where service was realized
+     * @param string $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function UFPrestacaoServico($value, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "Deve ser passado a UF.";
+        } else {
+            $msg = "O item '$campo' deve ser string, referente a UF. Informado: '$value'";
+        }
+
+        if (!Validator::stringType()->length(0, 100)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infUFPrestacaoServico = $value;
     }
 
     /**
