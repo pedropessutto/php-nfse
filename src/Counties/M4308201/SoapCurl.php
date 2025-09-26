@@ -66,11 +66,11 @@ class SoapCurl extends SoapBase
 
         $msgSize = strlen($envelope);
 
-        $parameters[0] = "Content-length: $msgSize";
+        $parameters[] = "Content-length: $msgSize";
 
         $this->requestHead = implode("\n", $parameters);
         $this->requestBody = $envelope;
-        $envelope = str_replace('<?xml version="1.0"?>', '', $envelope);
+/*        $envelope = str_replace('<?xml version="1.0"?>', '', $envelope);*/
 /*        $envelope = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $envelope);*/
 /*        $envelope = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $envelope);*/
 
@@ -156,11 +156,14 @@ class SoapCurl extends SoapBase
             $xmlns .= '' . $key . '="' . $value . '" ';
         }
 
-        return "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope $xmlns>
-             <soap:Body>
-             $request
-             </soap:Body>
-             </soap:Envelope>";
+        $xmlns = trim($xmlns);
+
+        return /*"<?xml version=\"1.0\" encoding=\"utf-8\"?>".*/
+            "<soap:Envelope $xmlns>"
+            . "<soap:Body>"
+            . $request
+            . "</soap:Body>"
+            . "</soap:Envelope>";
     }
 
     /**

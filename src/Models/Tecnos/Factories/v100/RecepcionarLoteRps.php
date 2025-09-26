@@ -49,7 +49,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $documentoFormatado = str_pad($remetenteCNPJCPF, 14, '0', STR_PAD_LEFT);
         $loteFormatado = str_pad($lote, 16, '0', STR_PAD_LEFT);
         $loteRps->setAttribute('Id', "1{$ano}{$documentoFormatado}{$loteFormatado}");
-        $loteRps->setAttribute('versao', '20.01');
+        $loteRps->setAttribute('versao', '2.01');
 
         $dom->appChild($root, $loteRps, 'Adicionando tag LoteRps a EnviarLoteRpsEnvio');
 
@@ -111,7 +111,8 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
 
         if ($qtdRps == 1) {
             //Parse para XML
-            $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $dom->saveXML());
+/*            $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $dom->saveXML());*/
+            $xml = $dom->saveXML();
 
             $body = Signer::sign(
                 $certificado ?: $this->certificate,
@@ -144,7 +145,8 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
             }
 
             // limpa o xml final
-            $body = $this->clear($domSigned->saveXML());
+//            $body = $this->clear($domSigned->saveXML());
+            $body = $domSigned->saveXML();
         }
         else {
             //Parse para XML
@@ -161,7 +163,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
                 true
             );
 
-            $body = $this->clear($body);
+//            $body = $this->clear($body);
         }
 
         return $body;

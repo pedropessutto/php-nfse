@@ -113,21 +113,21 @@ class Tools extends ToolsBase
      */
     protected function makeRequest($message)
     {
-        $versao = '20.01';
+        $versao = '2.01';
         switch ($this->versao) {
             case 100:
                 $request =
                     "<m{$this->method} xmlns=\"{$this->xmlns}\">"
                     . "<remessa>"
-//                    . "<![CDATA["
+                    . "<![CDATA["
                     . $message
-//                    . "]]>"
+                    . "]]>"
                     . "</remessa>"
-//                    . "<cabecalho>"
-//                    . "<![CDATA["
-                    . "<cabecalho xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><versaoDados>{$versao}</versaoDados></cabecalho>"
-//                    . "]]>"
-//                    . "</cabecalho>"
+                    . "<cabecalho>"
+                    . "<![CDATA["
+//                    . "<cabecalho xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><versaoDados>{$versao}</versaoDados></cabecalho>"
+                    . "]]>"
+                    . "</cabecalho>"
                     . "</m{$this->method}>";
                 break;
             default:

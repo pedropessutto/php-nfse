@@ -810,6 +810,42 @@ class RenderRps extends RenderRPSBase
             false
         );
 
+//        self::$dom->addChild(
+//            $infRPS,
+//            'EspecieDocumento',
+//            $rps->,
+//            false,
+//            'EspecieDocumento',
+//            false
+//        );
+
+//        self::$dom->addChild(
+//            $infRPS,
+//            'SerieTalonario',
+//            $rps->,
+//            false,
+//            'SerieTalonario',
+//            false
+//        );
+
+//        self::$dom->addChild(
+//            $infRPS,
+//            'FormaPagamento',
+//            $rps->,
+//            false,
+//            'FormaPagamento',
+//            false
+//        );
+
+//        self::$dom->addChild(
+//            $infRPS,
+//            'NumeroParcelas',
+//            $rps->,
+//            false,
+//            'NumeroParcelas',
+//            false
+//        );
+
         self::$dom->appChild($tcdeclaracaoRPS, $infRPS, 'Adicionando tag infRPS em RPS');
         self::$dom->appChild($root, $tcdeclaracaoRPS, 'Adicionando tag infRPS em RPS');
         self::$dom->appChild($parent, $root, 'Adicionando tag RPS na ListaRps');

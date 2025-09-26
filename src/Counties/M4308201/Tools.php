@@ -66,15 +66,15 @@ class Tools extends ToolsModel
      */
     protected $namespaces = [
         1 => [
-            'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
-            'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema",
+//            'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+//            'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema",
             'xmlns:soap' => "http://schemas.xmlsoap.org/soap/envelope/",
 //            'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
 //            'xmlns' => "http://tempuri.org/"
         ],
         2 => [
-            'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
-            'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema",
+//            'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+//            'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema",
             'xmlns:soap' => "http://schemas.xmlsoap.org/soap/envelope/",
 
         ]
