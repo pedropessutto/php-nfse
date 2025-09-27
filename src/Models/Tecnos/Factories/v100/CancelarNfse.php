@@ -40,22 +40,23 @@ class CancelarNfse extends Factory
      * @return string
      */
     public function render(
-
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
         $inscricaoMunicipal,
         $nfseNumero,
         $codigoCancelamento,
-        $motivoCancelamento
+        $motivoCancelamento,
+        $certificado = null
     ) 
     {
         $method = 'CancelarNfseEnvio';
 
         $dom = new Dom('1.0', 'utf-8');
         $dom->formatOutput = false;
+
         //Cria o elemento pai
         $root = $dom->createElement('CancelarNfseEnvio');
-        //$root->setAttribute('xmlns', $this->xmlns);
+        $root->setAttribute('xmlns', $this->xmlns);
 
         //Adiciona as tags ao DOM
         $dom->appendChild($root);
@@ -63,8 +64,11 @@ class CancelarNfse extends Factory
         $loteRps = $dom->createElement('Pedido');
 
         $dom->appChild($root, $loteRps, 'Adicionando tag Pedido');
-        
+
+        $numeroFormatado = str_pad($nfseNumero, 14, '0', STR_PAD_LEFT);
         $InfPedidoCancelamento = $dom->createElement('InfPedidoCancelamento');
+        $InfPedidoCancelamento->setAttribute('Id', "R{$remetenteCNPJCPF}{$numeroFormatado}");
+
 
         $dom->appChild(
             $loteRps,
@@ -153,7 +157,7 @@ class CancelarNfse extends Factory
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $dom->saveXML());
 
         $body = Signer::sign(
-            $this->certificate,
+            $certificado ?: $this->certificate,
             $xml,
             'InfPedidoCancelamento',
             'Id',

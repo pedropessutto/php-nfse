@@ -82,7 +82,6 @@ class RenderRps extends RenderRPSBase
         //Identificação RPS
         $identificacaoRps = self::$dom->createElement('IdentificacaoRps');
 
-
         $rps->infDataEmissao->setTimezone(self::$timezone);
 
         self::$dom->addChild(

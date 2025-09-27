@@ -25,6 +25,8 @@ class Tools extends ToolsModel
             'ConsultaNFSePorRPS' => 'http://flores.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx',
             'EnvioLoteRPSSincrono' => 'http://flores.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx',
             'EnvioLoteRPSSincronoComRetornoLista' => 'http://flores.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx',
+            'CancelarNfse' => 'http://flores.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx',
+            'CancelamentoNFSe' => 'http://flores.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx',
         ],
         2 => [
             'ConsultaSequenciaLoteNotaRPS' => 'http://homologaflo.nfse-tecnos.com.br:9084/ConsultaSequenciaLoteNotaRPS.asmx',
@@ -32,6 +34,7 @@ class Tools extends ToolsModel
             'EnvioLoteRPSSincronoComRetornoLista' => 'http://homologaflo.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx',
             'ConsultaNFSePorRPS' => 'http://homologaflo.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx',
             'CancelarNfse' => 'http://homologaflo.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx',
+            'CancelamentoNFSe' => 'http://homologaflo.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx',
         ]
     ];
 

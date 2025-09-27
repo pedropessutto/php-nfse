@@ -206,11 +206,11 @@ class Tools extends ToolsBase
      * @param string $nfseNumero
      * @return string
      */
-    public function cancelarNfse($nfseNumero, $codigoCancelamento, $motivoCancelamento)
+    public function cancelarNfse($nfseNumero, $codigoCancelamento, $motivoCancelamento, $certificado = null)
     {
         $class = "NFePHP\\NFSe\\Models\\Tecnos\\Factories\\v{$this->versao}\\CancelarNfse";
         $fact = new $class($this->certificate);
-        return $this->cancelarNfseCommon($fact, $nfseNumero, $codigoCancelamento, $motivoCancelamento);
+        return $this->cancelarNfseCommon($fact, $nfseNumero, $codigoCancelamento, $motivoCancelamento, '', $certificado);
     }
 
     /**
@@ -219,15 +219,16 @@ class Tools extends ToolsBase
      * @param string $url
      * @return string
      */
-    protected function cancelarNfseCommon($fact, $nfseNumero, $codigoCancelamento, $motivoCancelamento, $url = '')
+    protected function cancelarNfseCommon($fact, $nfseNumero, $codigoCancelamento, $motivoCancelamento, $url = '', $certificado = null)
     {
-        $this->method = 'CancelarNfse';
+        $this->method = 'CancelamentoNFSe';
         $fact->setXmlns($this->xmlns);
         $fact->setSchemeFolder($this->schemeFolder);
         $fact->setCmun($this->config->cmun);
         $fact->setSignAlgorithm($this->algorithm);
         $this->soapAction = 'http://tempuri.org/mCancelamentoNFSe';
-        $message = $fact->render($this->remetenteTipoDoc, $this->remetenteCNPJCPF, $this->remetenteIM, $nfseNumero, $codigoCancelamento, $motivoCancelamento);
+        $message = $fact->render($this->remetenteTipoDoc, $this->remetenteCNPJCPF, $this->remetenteIM, $nfseNumero, $codigoCancelamento, $motivoCancelamento, $certificado);
+        $this->xmlns = 'http://tempuri.org/';
         return $this->sendRequest($url, $message);
     }
 //
