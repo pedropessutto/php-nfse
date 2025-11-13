@@ -82,7 +82,8 @@ class SoapCurl extends SoapBase
             curl_setopt($oCurl, CURLOPT_URL, $url);
             curl_setopt($oCurl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
             curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, $this->soaptimeout);
-            curl_setopt($oCurl, CURLOPT_TIMEOUT, $this->soaptimeout + 20);
+//            curl_setopt($oCurl, CURLOPT_TIMEOUT, $this->soaptimeout + 20);
+            curl_setopt($oCurl, CURLOPT_TIMEOUT, 90);
             curl_setopt($oCurl, CURLOPT_HEADER, 1);
             curl_setopt($oCurl, CURLOPT_HTTP_VERSION, $this->httpver);
             curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, 0);
