@@ -182,6 +182,32 @@ class Rps extends RpsBase
      * @var float
      */
     public $infValorIssRetido;
+    
+    /**
+     * @var int
+     */
+    public $infIbsMunicipal;
+    /**
+     * @var float
+     */
+    public $infValorIbsMunicipal;
+    /**
+     * @var int
+     */
+    public $infIbsEstadual;
+    /**
+     * @var float
+     */
+    public $infValorIbsEstadual;
+    /**
+     * @var int
+     */
+    public $infCbs;
+    /**
+     * @var float
+     */
+    public $infValorCbs;
+    
     /**
      * @var float
      */
@@ -238,6 +264,14 @@ class Rps extends RpsBase
      * @var int
      */
     public $infNumeroProcesso;
+    /**
+     * @var string
+     */
+    public $infCodigoNbs;
+    /**
+     * @var int
+     */
+    public $infCodigoServicoNacional;
 
     /**
      * Set informations of provider
@@ -744,6 +778,126 @@ class Rps extends RpsBase
     }
 
     /**
+     * Set IBS Municipal taxes retention flag
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function ibsMunicipal($value = self::NAO, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "IssRetido deve ser 1 ou 2.";
+        } else {
+            $msg = "O item '$campo' deve ser 1 ou 2. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infIbsMunicipal = $value;
+    }
+
+    /**
+     * Set amount of IBS Municipal
+     * @param float $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function valorIbsMunicipal($value = 0.00, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "Os valores devem ser numericos tipo float.";
+        } else {
+            $msg = "O item '$campo' deve ser numérico tipo float. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infValorIbsMunicipal = round($value, 2);
+    }
+
+    /**
+     * Set IBS Estadual taxes retention flag
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function ibsEstadual($value = self::NAO, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "IssRetido deve ser 1 ou 2.";
+        } else {
+            $msg = "O item '$campo' deve ser 1 ou 2. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infIbsEstadual = $value;
+    }
+
+    /**
+     * Set amount of IBS Estadual
+     * @param float $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function valorIbsEstadual($value = 0.00, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "Os valores devem ser numericos tipo float.";
+        } else {
+            $msg = "O item '$campo' deve ser numérico tipo float. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infValorIbsEstadual = round($value, 2);
+    }
+
+    /**
+     * Set CBS taxes retention flag
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function cbs($value = self::NAO, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "IssRetido deve ser 1 ou 2.";
+        } else {
+            $msg = "O item '$campo' deve ser 1 ou 2. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infCbs = $value;
+    }
+
+    /**
+     * Set amount of CBS
+     * @param float $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function valorCbs($value = 0.00, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "Os valores devem ser numericos tipo float.";
+        } else {
+            $msg = "O item '$campo' deve ser numérico tipo float. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infValorCbs = round($value, 2);
+    }
+
+    /**
      * Set calculation base value
      * (Valor dos serviços - Valor das deduções - descontos incondicionados)
      * @param float $value
@@ -1058,5 +1212,51 @@ class Rps extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->infNumeroProcesso = $value;
+    }
+
+    /**
+     * Set NBS code
+     * @param string $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function codigoNbs($value, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "A discriminação é obrigatória e deve ter no máximo 2000 caracteres.";
+        } else {
+            $msg = "O item '$campo' é obrigatória e deve ter no máximo 2000 caracteres. Informado: ".strlen($value)." caracteres";
+        }
+
+        $value = trim($value);
+        if (!Validator::stringType()->length(1, 2000)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infCodigoNbs = $value;
+    }
+    /**
+     * @param string $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+
+    /**
+     * Set Codigo Servico Nacional
+     * @param string $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function codigoServicoNacional($value, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "Deve ser passado o Código Nacional de Serviço.";
+        } else {
+            $msg = "O item '$campo' deve ser string, referente ao numero do processo. Informado: '$value'";
+        }
+
+        if (!Validator::stringType()->length(0, 100)->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infCodigoServicoNacional = $value;
     }
 }

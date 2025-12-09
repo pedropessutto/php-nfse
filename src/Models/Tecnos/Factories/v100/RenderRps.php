@@ -308,6 +308,61 @@ class RenderRps extends RenderRPSBase
             'DescontoCondicionado',
             false
         );
+
+        // IBS Municipal
+        self::$dom->addChild(
+            $tcDadosServico,
+            'IbsMunicipal',
+            $rps->infIbsMunicipal,
+            true,
+            'IbsMunicipal',
+            false
+        );
+        self::$dom->addChild(
+            $tcDadosServico,
+            'ValorIbsMunicipal',
+            $rps->infValorIbsMunicipal,
+            false,
+            'ValorIbsMunicipal',
+            false
+        );
+
+        // IBS Estadual
+        self::$dom->addChild(
+            $tcDadosServico,
+            'IbsEstadual',
+            $rps->infIbsEstadual,
+            true,
+            'IbsEstadual',
+            false
+        );
+        self::$dom->addChild(
+            $tcDadosServico,
+            'ValorIbsEstadual',
+            $rps->infValorIbsEstadual,
+            false,
+            'ValorIbsEstadual',
+            false
+        );
+
+        // CBS
+        self::$dom->addChild(
+            $tcDadosServico,
+            'Cbs',
+            $rps->infCbs,
+            true,
+            'Cbs',
+            false
+        );
+        self::$dom->addChild(
+            $tcDadosServico,
+            'ValorCbs',
+            $rps->infValorCbs,
+            false,
+            'ValorCbs',
+            false
+        );
+
         self::$dom->appChild($tcDadosServico, $valores, 'Adicionando tag Valores em Servico');
         self::$dom->addChild(
             $tcDadosServico,
@@ -401,6 +456,24 @@ class RenderRps extends RenderRPSBase
             'NumeroProcesso',
             false
         );
+
+        self::$dom->addChild(
+            $tcDadosServico,
+            'CodigoNBS',
+            $rps->infCodigoNbs,
+            false,
+            'CodigoNBS',
+            false
+        );
+        self::$dom->addChild(
+            $tcDadosServico,
+            'CodigoServicoNacional',
+            $rps->infCodigoServicoNacional,
+            false,
+            'CodigoServicoNacional',
+            false
+        );
+
         self::$dom->appChild($servico, $tcDadosServico, 'Adicionando tag Valores em Servico');
         self::$dom->appChild($infRPS, $servico, 'Adicionando tag Servico');
         /** FIM Serviços **/
