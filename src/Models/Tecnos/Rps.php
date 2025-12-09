@@ -786,12 +786,12 @@ class Rps extends RpsBase
     public function ibsMunicipal($value = self::NAO, $campo = null)
     {
         if (!$campo) {
-            $msg = "IssRetido deve ser 1 ou 2.";
+            $msg = "IBS municipal deve ser 0 ou 1.";
         } else {
-            $msg = "O item '$campo' deve ser 1 ou 2. Informado: '$value'";
+            $msg = "O item '$campo' deve ser 0 ou 1. Informado: '$value'";
         }
 
-        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+        if (!Validator::numeric()->intVal()->between(0, 1)->validate($value)) {
             throw new InvalidArgumentException($msg);
         }
         $this->infIbsMunicipal = $value;
@@ -826,12 +826,12 @@ class Rps extends RpsBase
     public function ibsEstadual($value = self::NAO, $campo = null)
     {
         if (!$campo) {
-            $msg = "IssRetido deve ser 1 ou 2.";
+            $msg = "IBS Estadual deve ser 0 ou 1.";
         } else {
-            $msg = "O item '$campo' deve ser 1 ou 2. Informado: '$value'";
+            $msg = "O item '$campo' deve ser 0 ou 1. Informado: '$value'";
         }
 
-        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+        if (!Validator::numeric()->intVal()->between(0, 1)->validate($value)) {
             throw new InvalidArgumentException($msg);
         }
         $this->infIbsEstadual = $value;
@@ -866,12 +866,12 @@ class Rps extends RpsBase
     public function cbs($value = self::NAO, $campo = null)
     {
         if (!$campo) {
-            $msg = "IssRetido deve ser 1 ou 2.";
+            $msg = "CBS deve ser 0 ou 1.";
         } else {
-            $msg = "O item '$campo' deve ser 1 ou 2. Informado: '$value'";
+            $msg = "O item '$campo' deve ser 0 ou 1. Informado: '$value'";
         }
 
-        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+        if (!Validator::numeric()->intVal()->between(0, 1)->validate($value)) {
             throw new InvalidArgumentException($msg);
         }
         $this->infCbs = $value;
