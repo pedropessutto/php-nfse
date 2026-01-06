@@ -1223,13 +1223,13 @@ class Rps extends RpsBase
     public function codigoNbs($value, $campo = null)
     {
         if (!$campo) {
-            $msg = "A discriminação é obrigatória e deve ter no máximo 2000 caracteres.";
+            $msg = "O Código NBS é obrigatório e deve ter no máximo 12 caracteres.";
         } else {
-            $msg = "O item '$campo' é obrigatória e deve ter no máximo 2000 caracteres. Informado: ".strlen($value)." caracteres";
+            $msg = "O item '$campo' é obrigatória e deve ter no máximo 12 caracteres. Informado: ".strlen($value)." caracteres";
         }
 
         $value = trim($value);
-        if (!Validator::stringType()->length(1, 2000)->validate($value)) {
+        if (!Validator::stringType()->length(1, 12)->validate($value)) {
             throw new InvalidArgumentException($msg);
         }
         $this->infCodigoNbs = $value;
