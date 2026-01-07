@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Counties\M4308201;
+namespace NFePHP\NFSe\Counties\M4323309;
 
 /**
  * Classe a construção do xml da NFSe
