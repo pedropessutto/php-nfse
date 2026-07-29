@@ -272,6 +272,26 @@ class Rps extends RpsBase
      * @var int
      */
     public $infCodigoServicoNacional;
+    /**
+     * @var int
+     */
+    public $infCodigoSituacaoTributariaPisCofins;
+    /**
+     * @var int
+     */
+    public $infTipoRetencaoPisCofins;
+    /**
+     * @var int
+     */
+    public $infTipoEnteGovervamental;
+    /**
+     * @var int
+     */
+    public $infTipoOperacao;
+    /**
+     * @var int
+     */
+    public $infIndicadorDestinatarioServico;
 
     /**
      * Set informations of provider
@@ -1258,5 +1278,105 @@ class Rps extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->infCodigoServicoNacional = $value;
+    }
+
+    /**
+     * Set Codigo Situacao Tributaria Pis Cofins
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function codigoSituacaoTributariaPisCofins($value = 1, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "O Código Situação Tributária PIS/COFINS deve ser um valor inteiro.";
+        } else {
+            $msg = "O item '$campo' deve ser um valor inteiro. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infCodigoSituacaoTributariaPisCofins = $value;
+    }
+
+    /**
+     * Set Tipo Retencao Pis Cofins
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function tipoRetencaoPisCofins($value = 0, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "O Tipo Retenção PIS/COFINS deve ser um valor inteiro.";
+        } else {
+            $msg = "O item '$campo' deve ser um valor inteiro. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infTipoRetencaoPisCofins = $value;
+    }
+
+    /**
+     * Set Tipo Ente Govervamental
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function tipoEnteGovervamental($value = 0, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "O Tipo Ente Governamental deve ser um valor inteiro.";
+        } else {
+            $msg = "O item '$campo' deve ser um valor inteiro. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infTipoEnteGovervamental = $value;
+    }
+
+    /**
+     * Set Tipo Operacao
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function tipoOperacao($value = 1, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "O Tipo Operação deve ser um valor inteiro.";
+        } else {
+            $msg = "O item '$campo' deve ser um valor inteiro. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infTipoOperacao = $value;
+    }
+
+    /**
+     * Set Indicador Destinatario Servico
+     * @param int $value
+     * @param string $campo - String com o nome do campo caso queira mostrar na mensagem de validação
+     * @throws InvalidArgumentException
+     */
+    public function indicadorDestinatarioServico($value = 0, $campo = null)
+    {
+        if (!$campo) {
+            $msg = "O Indicador Destinatário Serviço deve ser um valor inteiro.";
+        } else {
+            $msg = "O item '$campo' deve ser um valor inteiro. Informado: '$value'";
+        }
+
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new InvalidArgumentException($msg);
+        }
+        $this->infIndicadorDestinatarioServico = $value;
     }
 }

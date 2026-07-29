@@ -918,6 +918,51 @@ class RenderRps extends RenderRPSBase
 //            false
 //        );
 
+        self::$dom->addChild(
+            $infRPS,
+            'CodigoSituacaoTributariaPisCofins',
+            $rps->infCodigoSituacaoTributariaPisCofins, // default 1
+            true,
+            'CodigoSituacaoTributariaPisCofins',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'TipoRetencaoPisCofins',
+            $rps->infTipoRetencaoPisCofins, // default 0
+            true,
+            'TipoRetencaoPisCofins',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'TipoEnteGovervamental',
+            $rps->infTipoEnteGovervamental, // default 0
+            true,
+            'TipoEnteGovervamental',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'TipoOperacao',
+            $rps->infTipoOperacao, // default 1
+            true,
+            'TipoOperacao',
+            false
+        );
+
+        self::$dom->addChild(
+            $infRPS,
+            'IndicadorDestinatarioServico',
+            $rps->infIndicadorDestinatarioServico, // default 0
+            true,
+            'IndicadorDestinatarioServico',
+            false
+        );
+
         self::$dom->appChild($tcdeclaracaoRPS, $infRPS, 'Adicionando tag infRPS em RPS');
         self::$dom->appChild($root, $tcdeclaracaoRPS, 'Adicionando tag infRPS em RPS');
         self::$dom->appChild($parent, $root, 'Adicionando tag RPS na ListaRps');
